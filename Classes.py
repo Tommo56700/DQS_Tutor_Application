@@ -40,7 +40,10 @@ class Tutor:
 			print(student.fName + " " + student.sName)
 		
 	def addStudent(self, Student):
-		self.Students.append(Student)
+		if(len(self.Students) >= self.studentNum):
+			ValueError
+		else:
+			self.Students.append(Student)
 	
 testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
 testStudent = Student(1, "CM101", "Fred", "Jones", testTutor, "2014/15", "fjones@uni.co.uk")
