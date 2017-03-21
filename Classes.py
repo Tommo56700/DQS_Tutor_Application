@@ -21,19 +21,21 @@ class Student:
 		self.Tutor.Students.remove(self)
 		
 	def getId(self): #retrieval functions
-		return(studentId)
+		return(self.studentId)
 	def getCourse(self):
-		return(course)
+		return(self.course)
 	def getFName(self):
-		return(fName)
+		return(self.fName)
 	def getSName(self):
-		return(sName)
+		return(self.sName)
 	def getTutor(self):
-		return(Tutor)
+		return(self.Tutor)
 	def getAcadYear(self):
-		return(acadYear)
+		return(self.acadYear)
 	def getEmail(self):
-		return(uniEmail)
+		return(self.uniEmail)
+	def getFullName(self):
+		return(self.fName + " " + self.sName)
 		
 class Tutor:
 	def __init__(self, staffId, course, fName, sName, uniEmail, admin, studentNum):#create Tutor
@@ -75,21 +77,23 @@ class Tutor:
 		return(studentList)
 	
 	def getId(self): #retrieval functions
-		return(staffId)
+		return(self.staffId)
 	def getCourse(self):
-		return(course)
+		return(self.course)
 	def getFName(self):
-		return(fName)
+		return(self.fName)
 	def getSName(self):
-		return(sName)
+		return(self.sName)
 	def getStudentNum(self):
-		return(studentNum)
+		return(self.studentNum)
 	def getAdmin(self):
-		return(admin)
+		return(self.admin)
 	def getEmail(self):
-		return(uniEmail)
+		return(self.uniEmail)
 	def getStudents(self):
-		return(Students)
+		return(self.Students)
+	def getFullName(self):
+		return(self.fName + " " + self.sName)
 
 #--Debug Outputs--
 #testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
