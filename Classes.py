@@ -47,6 +47,14 @@ class Tutor:
 			ValueError
 		else:
 			self.Students.append(Student)
+			
+	def listStudentNames(self):
+		studentList = []
+	
+		for student in self.Students:
+			studentList.append(student.fName + " " + student.sName)
+		
+		return(studentList)
 	
 testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
 testStudent = Student(1, "CM101", "Fred", "Jones", testTutor, "2014/15", "fjones@uni.co.uk")
