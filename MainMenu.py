@@ -23,15 +23,13 @@ class MainMenu(Frame):
 		butFind.grid(row=6, column=1, pady=(2, 0))
 		
 		butDelete = Button(self, text="Delete Student", font=("Helvetica", 10))
-		butDelete.grid(row=8, column=1, pady=(2, 0))
+		butDelete.grid(row=9, column=1, pady=(2, 0))
 		
 		butTransfer = Button(self, text="Transfer Student", font=("Helvetica", 10))
 		butTransfer.grid(row=8, column=1, pady=(2, 0))
 		
 		butQuit = Button(self, text="Quit", font=("Helvetica", 10), command=self.quit)
 		butQuit.grid(row=10, column=1, pady=(20, 10))
-		l1 = Label(text="Hello")
-		l2 = Label(text="World")
 def main():
 	root = Tk()
 	root.title("Tutor Management Software")
