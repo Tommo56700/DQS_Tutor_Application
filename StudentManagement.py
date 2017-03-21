@@ -1,3 +1,5 @@
+from Classes import *
+
 def studentDelete(Student):
 	Student.deleteStudent()
 	del(Student)
@@ -36,18 +38,16 @@ class MainMenu(Frame):
 		self.listProg.grid(row=3, column=1)
 		scroll.grid(row=3, column=2, sticky = W)
 		
-		Students = ["Bob Allen", "Jeff Darlson", "Mick Mack", "Harry Hunderton", "Paul Meynay", "Brian Scorely"]
-		
 		for Student in Students:
-			self.listProg.insert(END, Student)#Student.getFName() + " " + Student.getLName())
+			self.listProg.insert(END, Student.getFName() + " " + Student.getSName())
 		self.listProg.selection_set(END)
 		
 		lblProg = Label(self, text='Degree Programme:', font=('Helvetica', 10,'bold'))
 		
-		butReassign = Button(self, text="Reassign Student", font=("Helvetica", 10))#, command = matchTutor(,findTutorForStudent()))
+		butReassign = Button(self, text="Reassign Student", font=("Helvetica", 10), command = matchTutor(Student, findTutorForStudent(Student)))
 		butReassign.grid(row=5, column=1, pady=(2, 0))
 		
-		butDelete = Button(self, text="Delete Student", font=("Helvetica", 10))#, command=studentDelete())
+		butDelete = Button(self, text="Delete Student", font=("Helvetica", 10), command=studentDelete(Student))
 		butDelete.grid(row=4, column=1, pady=(2, 0))
 		
 		butQuit = Button(self, text="Quit", font=("Helvetica", 10), command=self.quit)
