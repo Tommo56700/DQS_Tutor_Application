@@ -27,6 +27,10 @@ class Tutor:
 		self.uniEmail = uniEmail
 		self.admin = admin
 		self.studentNum = studentNum
+	
+	def displayStudents(self):
+		for student in self.Students:
+			print(student.fName + " " + student.sName)
 		
 	def output(self):
 		print(self.staffId)
@@ -36,8 +40,7 @@ class Tutor:
 		print(self.uniEmail)
 		print(self.admin)
 		print(self.studentNum)
-		for student in self.Students:
-			print(student.fName + " " + student.sName)
+		self.displayStudents()
 		
 	def addStudent(self, Student):
 		if(len(self.Students) >= self.studentNum):
