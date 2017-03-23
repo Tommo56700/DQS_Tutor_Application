@@ -9,16 +9,10 @@ class Student:
 		self.uniEmail = uniEmail
 		
 	def output(self): #print outputs for debug
-		print(self.studentId)
-		print(self.course)
-		print(self.fName)
-		print(self.sName)
-		if type(self.Tutor) == type(Tutor):
-			print(self.Tutor.fName + " " + self.Tutor.sName)
+		if not isinstance(self.Tutor, str):
+			return self.studentId, self.course, self.fName, self.sName, self.Tutor.fName, self.Tutor.sName, self.acadYear, self.uniEmail
 		else:
-			print("No Tutor set.")
-		print(self.acadYear)
-		print(self.uniEmail)
+			return self.studentId, self.course, self.fName, self.sName, None, self.acadYear, self.uniEmail
 		
 	def deleteStudent(self): #deletion of student from tutor database
 		self.Tutor.Students.remove(self)
@@ -49,7 +43,7 @@ class Tutor:
 		self.Students = []
 		self.uniEmail = uniEmail
 		self.admin = admin
-		self.studentNum = studentNum
+		self.studentNum = int(studentNum)
 	
 	def displayStudents(self): #debug print of students
 		for student in self.Students:
@@ -99,13 +93,25 @@ class Tutor:
 		return(self.fName + " " + self.sName)
 
 #--Debug Outputs--
-#testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
-#testStudent = Student(1, "CM101", "Fred", "Jones", testTutor, "2014/15", "fjones@uni.co.uk")
+"""testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
+testStudent = Student(1, "CM101", "Fred", "Jones", testTutor, "2014/15", "fjones@uni.co.uk")
+testStudent2 = Student(2, "CM101", "Gred", "Dones", testTutor, "2014/15", "fjones@uni.co.uk")
+testStudent3 = Student(3, "CM101", "Tred", "Pones", testTutor, "2014/15", "fjones@uni.co.uk")
+testTutor2 = Tutor(13, "CM101", "Tailey", "Miths", "Tmiths@uni.co.uk", True, 10)
+testStudent4 = Student(4, "CM101", "Grep", "Domes", testTutor, "2014/15", "fjones@uni.co.uk")
+testStudent5 = Student(5, "CM101", "Trep", "Pomes", testTutor, "2014/15", "fjones@uni.co.uk")
 
-#testTutor.addStudent(testStudent)
+
+tutors = [testTutor, testTutor2]
+students = [testStudent, testStudent2, testStudent3]
+students2 = [testStudent4, testStudent5]
+for student in students:
+	testTutor.addStudent(student)
+for student in students2:
+	testTutor2.addStudent(student)
 
 #print("Test Student: ")
 #testStudent.output()
 #print("")
 #print("Test Tutor: ")
-#testTutor.output()
+#testTutor.output()"""
