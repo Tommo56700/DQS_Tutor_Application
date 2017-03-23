@@ -109,13 +109,13 @@ class Window(Frame):
 		entID = Entry(t, font=("Helvetica", 10))
 		entID.grid(row = 3, column = 1)
 		
-		butReassign = Button(t, text="Reassign Student", font=("Helvetica", 10), command = self.reasignWindow)
+		butReassign = Button(t, text="Reassign Student", font=("Helvetica", 10), command =lambda: self.reasignWindow(entID.get()))
 		butReassign.grid(row=5, column=1, pady=(2, 0))
 		
 		butDelete = Button(t, text="Delete Student", font=("Helvetica", 10), command = lambda: studentDelete(entID.get()))
 		butDelete.grid(row=4, column=1, pady=(2, 0))
 
-	def reasignWindow(self):
+	def reasignWindow(self, studentID):
 		u = Toplevel(self)
 		u.wm_title("Student Management")
 		u.grid()
@@ -124,23 +124,25 @@ class Window(Frame):
 		scroll = Scrollbar(u, command= u.listProg.yview)
 		u.listProg.configure(yscrollcommand=scroll.set)
 		
-		u.listProg.grid(row=3, column=1)
-		scroll.grid(row=3, column=2, sticky = W)
+		u.listProg.grid(row=0, column=1, columnspan = 2, rowspan = 2)
+		scroll.grid(row=0, column=2, columnspan = 2, sticky = E)
 		
+		student = getStudentFromID(studentID)
+
 		for Tutor in Tutors:
-			u.listProg.insert(END, Tutor.getFName() + " " + Tutor.getSName())
+			u.listProg.insert(END, Tutor.getFName() + " " + Tutor.getSName() + ": " + Tutor.getId())
 		u.listProg.selection_set(END)
 
 		entID = Entry(u, font=("Helvetica", 10))
-		entID.grid(row = 3, column = 1)
+		entID.grid(row = 2, column = 1)
 
 		lblProg = Label(u, text='Available Tutors: ', font=('Helvetica', 10,'bold'))
 		lblProg.grid(row=0, column=0, columnspan = 1)
 		lblHelp = Label(u, text='Input Staff ID for transfer: ', font=('Helvetica', 10,'bold'))
-		lblHelp.grid(row=3, column=1, columnspan = 1)
+		lblHelp.grid(row=2, column=0, columnspan = 1)
 
-		butReassign = Button(u, text="Reassign Student", font=("Helvetica", 10), command = t.reasignWindow)
-		butReassign.grid(row=5, column=1, pady=(2, 0))
+		butReassign = Button(u, text="Reassign Student", font=("Helvetica", 10), command = lambda: matchTutor(student, getTutorFromID(entID.get())))
+		butReassign.grid(row=2, column=2, pady=(0, 0))
 
 
 

@@ -32,22 +32,59 @@ def importFunc(fileName, btnList):
 
 def studentDelete(StudentID):
 	global Students
+	foundStudent = False
+
 	for student in Students:
 		if student.getId() == StudentID:
 			Students.remove(student)
 			student.deleteStudent()
-			del(student)
 			messagebox.showinfo("Success!" , "Student Deleted.")
+			foundStudent = True
+
+	if foundStudent == False:
+		messagebox.showinfo("ERROR!" , "Student Not Found.")
 	
 	
-def findTutorForStudent(Student):
-	#import list of tutors
-	Tutors = []
-	tutorMatch = []
-	for Tutor in range(0, len(Tutors)):
-		if (Student.getCourse() == Tutor.getCourse()) and (Tutor.getStudentNum() > len(Tutor.Students)):
-			tutorMatch.append(Tutor)
-			
+def findTutorForStudent(student):
+	global Tutors
+	matchTutor = []
+	tutorFound = False
+
+	for tutor in Tutors:
+		if student.getCourse() == tutor.getCourse():
+			matchTutor.append(tutor)
+			tutorFound = True
+
+	if tutorFound == False:
+		messagebox.showinfo("ERROR!" , "No Match Found.")
+	else:
+		return(matchTutor)
+		
 def matchTutor(Student, Tutor):
-	Student.Tutor = Tutor
-	Tutor.addStudent(Student)
+	try:
+		Student.deleteStudent()
+		Student.Tutor = Tutor
+	except:
+		messagebox.showinfo("ERROR!" , "Student ID is Incorrect.")
+	try:
+		Tutor.addStudent(Student)
+		messagebox.showinfo("Success!" , "Student Reassigned.")
+	except:
+		messagebox.showinfo("ERROR!" , "Tutor ID is Incorrect.")
+	
+		
+
+
+def getStudentFromID(studentID):
+	global Students
+
+	for student in Students:
+		if student.getId() == studentID:
+			return(student)
+
+def getTutorFromID(tutorID):
+	global Tutors
+
+	for tutor in Tutors:
+		if tutor.getId() == tutorID:
+			return(tutor)

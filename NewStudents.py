@@ -26,9 +26,14 @@ def csv_import(filename1, filename2, header=True):
 	assign_students(Students, Tutors)
 
 def assign_students(students, tutors):
+	global Tutors
+	global Students
+
+	assigned=[]	
+
 	for tutor in Tutors:
-		for student in students:
-			if student.getCourse() == tutor.getCourse():
+		for student in Students:
+			if (student not in assigned) and (student.getCourse() == tutor.getCourse()):
 				tutor.addStudent(student)
 				student.setTutor(tutor)
 				break
