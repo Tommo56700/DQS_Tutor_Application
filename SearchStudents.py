@@ -45,7 +45,3 @@ def searchWindow():
 	root.title("Tutor Management Software")
 	app = SearchStudents(root)
 	root.mainloop()
-
-
-if __name__ == "__main__":
-	main()
