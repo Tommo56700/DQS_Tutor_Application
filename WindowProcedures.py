@@ -1,6 +1,6 @@
 from NewStudents import *
 
-def SearchByTutorID(tutor_id, lst):
+def SearchByTutorID(tutor_id, lst): #Finds students using the tutor ID
 	global Tutors
 	lst.delete(0, END)
 	for tutor in Tutors:
@@ -11,7 +11,7 @@ def SearchByTutorID(tutor_id, lst):
 				lst.selection_set(END)
 
 
-def searchByStudentID(student_id, lbl):
+def searchByStudentID(student_id, lbl): #Finds a student using their ID directly
 	global Students
 	for student in Students:
 		if student_id == student.getId():
@@ -20,7 +20,7 @@ def searchByStudentID(student_id, lbl):
 		else:
 			lbl.config(text = "STUDENT ID NOT FOUND")
 				
-def importFunc(fileName, btnList):
+def importFunc(fileName, btnList): #Used to check existance of file
 	try:
 		csv_import(fileName, "tutors.csv")
 	except FileNotFoundError:
@@ -30,7 +30,7 @@ def importFunc(fileName, btnList):
 			btn.config(state="normal")
 		messagebox.showinfo("Success!" , "File read successfully.")
 
-def studentDelete(StudentID):
+def studentDelete(StudentID): #Removes a student from the Students[] list as well as removes them from a tutors personal students list
 	global Students
 	foundStudent = False
 
@@ -45,7 +45,7 @@ def studentDelete(StudentID):
 		messagebox.showinfo("ERROR!" , "Student Not Found.")
 	
 	
-def findTutorForStudent(student):
+def findTutorForStudent(student): #Matches tutor to student course. (UNUSED)
 	global Tutors
 	matchTutor = []
 	tutorFound = False
@@ -60,7 +60,7 @@ def findTutorForStudent(student):
 	else:
 		return(matchTutor)
 		
-def matchTutor(Student, Tutor):
+def matchTutor(Student, Tutor): #Removes a student from their last tutor and puts them in a new one.
 	try:
 		Student.deleteStudent()
 		Student.Tutor = Tutor
@@ -72,17 +72,14 @@ def matchTutor(Student, Tutor):
 	except:
 		messagebox.showinfo("ERROR!" , "Tutor ID is Incorrect.")
 	
-		
-
-
-def getStudentFromID(studentID):
+def getStudentFromID(studentID): #Retrieves a student object using an ID
 	global Students
 
 	for student in Students:
 		if student.getId() == studentID:
 			return(student)
 
-def getTutorFromID(tutorID):
+def getTutorFromID(tutorID): #Retrieves a tutor object using an ID
 	global Tutors
 
 	for tutor in Tutors:

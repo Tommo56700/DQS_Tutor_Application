@@ -3,7 +3,7 @@ from Classes import *
 from tkinter import messagebox
 from WindowProcedures import *
 
-class Window(Frame):
+class Window(Frame): #Creates the Main Menu, each function from then on creates another window for the user to interact with.
 	def __init__(self, master):
 		Frame.__init__(self, master)
 		self.menuWindow()
@@ -146,7 +146,7 @@ class Window(Frame):
 
 
 
-def main():
+def main(): #defining the start of the code and callinf Window()
 	root = Tk()
 	root.title("Tutor Management Software")
 	root.resizable(False, False)
