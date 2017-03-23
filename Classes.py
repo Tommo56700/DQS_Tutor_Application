@@ -1,8 +1,11 @@
 class Student:
-	def __init__(self, studentId, course, fName, sName, Tutor, acadYear, uniEmail): #create student
+	def __init__(self, studentId, sName, fName, fName2, Tutor, course, acadYear, uniEmail): #create student
 		self.studentId = studentId
 		self.course = course
-		self.fName = fName
+		if fName2 != "":
+			self.fName = fName + " " + fName2
+		else:
+			self.fName = fName
 		self.sName = sName
 		self.Tutor = Tutor
 		self.acadYear = acadYear
@@ -10,13 +13,16 @@ class Student:
 		
 	def output(self): #print outputs for debug
 		if not isinstance(self.Tutor, str):
-			return self.studentId, self.course, self.fName, self.sName, self.Tutor.fName, self.Tutor.sName, self.acadYear, self.uniEmail
+			return self.studentId + "   ||   " + self.course + "   ||   " + self.fName + " " + self.sName + "   ||   " + self.Tutor.fName + " " + self.Tutor.sName + "   ||   " + str(self.acadYear) + "   ||   " + self.uniEmail
 		else:
-			return self.studentId, self.course, self.fName, self.sName, None, self.acadYear, self.uniEmail
+			return self.studentId + "   ||   " + self.course + "   ||   " + self.fName + " " + self.sName + "   ||   (Tutor not assigned)" + "   ||   " + str(self.acadYear) + "   ||   " + self.uniEmail
 		
 	def deleteStudent(self): #deletion of student from tutor database
 		self.Tutor.Students.remove(self)
-		
+
+	def setTutor(self, tutor):
+		self.Tutor = tutor
+
 	def getId(self): #retrieval functions
 		return(self.studentId)
 	def getCourse(self):

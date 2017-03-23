@@ -1,4 +1,7 @@
+from tkinter import *
+from NewStudents import *
 from Classes import *
+
 
 Students = []
 Tutors = []
@@ -12,7 +15,7 @@ def csv_import(filename1, filename2, header=True):
 			rdr = csv.reader(csvfile)
 			next(csvfile)
 			for row in rdr:
-				Students.append(Student(row[0], row[1], row[2], row[3], row[4], row[5], row[6]))
+				Students.append(Student(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]))
 
 	with open(filename2) as csvfile:
 			rdr = csv.reader(csvfile)
@@ -27,4 +30,5 @@ def assign_students(students, tutors):
 		for student in students:
 			if student.getCourse() == tutor.getCourse():
 				tutor.addStudent(student)
+				student.setTutor(tutor)
 				break
