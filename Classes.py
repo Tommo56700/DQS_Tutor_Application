@@ -13,7 +13,10 @@ class Student:
 		print(self.course)
 		print(self.fName)
 		print(self.sName)
-		print(self.Tutor.fName + " " + self.Tutor.sName)
+		if type(self.Tutor) == type(Tutor):
+			print(self.Tutor.fName + " " + self.Tutor.sName)
+		else:
+			print("No Tutor set.")
 		print(self.acadYear)
 		print(self.uniEmail)
 		
