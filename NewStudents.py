@@ -1,5 +1,4 @@
 from tkinter import *
-from NewStudents import *
 from Classes import *
 
 

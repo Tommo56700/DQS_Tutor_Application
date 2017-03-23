@@ -97,27 +97,3 @@ class Tutor:
 		return(self.Students)
 	def getFullName(self):
 		return(self.fName + " " + self.sName)
-
-#--Debug Outputs--
-"""testTutor = Tutor(12, "CM101", "Hailey", "Smiths", "hsmiths@uni.co.uk", True, 10)
-testStudent = Student(1, "CM101", "Fred", "Jones", testTutor, "2014/15", "fjones@uni.co.uk")
-testStudent2 = Student(2, "CM101", "Gred", "Dones", testTutor, "2014/15", "fjones@uni.co.uk")
-testStudent3 = Student(3, "CM101", "Tred", "Pones", testTutor, "2014/15", "fjones@uni.co.uk")
-testTutor2 = Tutor(13, "CM101", "Tailey", "Miths", "Tmiths@uni.co.uk", True, 10)
-testStudent4 = Student(4, "CM101", "Grep", "Domes", testTutor, "2014/15", "fjones@uni.co.uk")
-testStudent5 = Student(5, "CM101", "Trep", "Pomes", testTutor, "2014/15", "fjones@uni.co.uk")
-
-
-tutors = [testTutor, testTutor2]
-students = [testStudent, testStudent2, testStudent3]
-students2 = [testStudent4, testStudent5]
-for student in students:
-	testTutor.addStudent(student)
-for student in students2:
-	testTutor2.addStudent(student)
-
-#print("Test Student: ")
-#testStudent.output()
-#print("")
-#print("Test Tutor: ")
-#testTutor.output()"""

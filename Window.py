@@ -1,6 +1,6 @@
 from tkinter import *
-from Classes import *
 from tkinter import messagebox
+from Classes import *
 from WindowProcedures import *
 
 class Window(Frame): #Creates the Main Menu, each function from then on creates another window for the user to interact with.
@@ -79,7 +79,7 @@ class Window(Frame): #Creates the Main Menu, each function from then on creates 
 		t.wm_title("Search Tutor")
 		t.grid()
 
-		lblTitle = Label(t, text = "Search for Students by Tutor", font=("Helvetica", 20,"bold"))
+		lblTitle = Label(t, text = "Search for Students by Tutor ID", font=("Helvetica", 20,"bold"))
 		lblTitle.grid(row=0, column=0, columnspan=5, padx=(20, 20), pady=(20,20))
 
 		entID = Entry(t, font=("Helvetica", 10))
@@ -146,7 +146,7 @@ class Window(Frame): #Creates the Main Menu, each function from then on creates 
 
 
 
-def main(): #defining the start of the code and callinf Window()
+def main(): #defining the start of the code and calling Window()
 	root = Tk()
 	root.title("Tutor Management Software")
 	root.resizable(False, False)
